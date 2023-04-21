@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Login from './components/login';
+import Alert from './components/alert';
 
-function App() {
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+
+  const handleLogin = (isValid) => {
+    setIsLoggedIn(isValid);
+    setAlertMessage(isValid ? 'Sesión iniciada correctamente.' : 'Datos ingresados incorrectos.');
+  };
+
+  const handleCloseAlert = () => {
+    setAlertMessage('');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {alertMessage &&
+        <Alert
+          variant={isLoggedIn ? 'success' : 'danger'}
+          onClose={handleCloseAlert}
+          message={alertMessage}
+        />
+      }
+      <Login onLogin={handleLogin} />
+    </>
   );
-}
+};
 
 export default App;
