@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Login from './components/login';
 import Alert from './components/alert';
+import Dictionary from './universal/dictionary/es';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -8,7 +9,7 @@ const App = () => {
 
   const handleLogin = (isValid) => {
     setIsLoggedIn(isValid);
-    setAlertMessage(isValid ? 'Sesión iniciada correctamente.' : 'Datos ingresados incorrectos.');
+    setAlertMessage(isValid ? Dictionary.alerts.success.message : Dictionary.alerts.danger.message);
   };
 
   const handleCloseAlert = () => {

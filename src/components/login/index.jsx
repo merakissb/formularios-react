@@ -14,7 +14,6 @@ const Login = ({ onLogin }) => {
     setIsFormValid(emailValue.trim() !== '' && password.trim() !== '');
   };
 
-
   const handlePasswordChange = (event) => {
     const passwordValue = event.target.value;
     setPassword(passwordValue);
