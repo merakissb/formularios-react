@@ -6,10 +6,10 @@ en función de su variante (success o danger).
 import React from 'react';
 import { Alert as BootstrapAlert } from 'react-bootstrap';
 
-const Alert = ({ variant, message, onClose }) => {
+const Alert = ({ variant, message }) => {
 
   return (
-    <BootstrapAlert variant={variant} onClose={onClose} dismissible>
+    <BootstrapAlert variant={variant}>
       {message}
     </BootstrapAlert>
   );

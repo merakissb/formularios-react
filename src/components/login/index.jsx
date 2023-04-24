@@ -7,28 +7,31 @@ import Dictionary from './config/dictionary/es';
 const Login = () => {
   const [alertVariant, setAlertVariant] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
+
+  const ALERT_DURATION = 2500;
 
   const handleLogin = (email, password) => {
-    if (authService.authenticate(email, password)) {
-      setAlertVariant('success');
-      setAlertMessage(Dictionary.alerts.success.message);
-    } else {
-      setAlertVariant('danger');
-      setAlertMessage(Dictionary.alerts.danger.message);
-    }
-  };
+    const isAuthenticated = authService.authenticate(email, password);
 
-  const handleCloseAlert = () => {
-    setAlertMessage('');
+    const alertVariant = isAuthenticated ? 'success' : 'danger';
+    const alertMessage = isAuthenticated ? Dictionary.alerts.success.message : Dictionary.alerts.danger.message;
+
+    setAlertVariant(alertVariant);
+    setAlertMessage(alertMessage);
+    setShowAlert(true);
+
+    setTimeout(() => {
+      setShowAlert(false);
+    }, ALERT_DURATION);
   };
 
   return (
     <>
-      {alertMessage && (
+      {showAlert && (
         <Alert
           variant={alertVariant}
           message={alertMessage}
-          onClose={handleCloseAlert}
         />
       )}
       <LoginForm onSubmit={handleLogin} />

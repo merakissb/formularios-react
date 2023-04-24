@@ -1,13 +1,9 @@
 /*
-Este componente representa un formulario de inicio de sesión con dos campos:
-uno para el correo electrónico y otro para la contraseña.
-
-Utiliza el estado de React para manejar los valores de entrada
-de los campos de correo electrónico y contraseña.
-
-Tiene una función handleSubmit que se ejecuta cuando se envía el formulario.
-Verifica si los campos de correo electrónico y contraseña son válidos y, si es así,
-llama a la función onSubmit pasando los valores de correo electrónico y contraseña ingresados.
+Este componente es un formulario de inicio de sesión que
+permite al usuario ingresar su correo electrónico y contraseña.
+Tiene un estado interno para almacenar los valores de correo electrónico y contraseña
+y maneja la validación del formulario. Cuando se envía el formulario,
+se llama a la función onSubmit pasándole el correo electrónico y la contraseña ingresados.
 */
 
 import React, { useState } from 'react';
@@ -41,7 +37,7 @@ const LoginForm = ({ onSubmit }) => {
                 type="email"
                 placeholder={Dictionary.form.fields.email.placeholder}
                 value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={({ target: { value } }) => setEmail(value)}
               />
             </Form.Group>
 
@@ -51,7 +47,7 @@ const LoginForm = ({ onSubmit }) => {
                 type="password"
                 placeholder={Dictionary.form.fields.password.placeholder}
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={({ target: { value } }) => setPassword(value)}
               />
             </Form.Group>
 
