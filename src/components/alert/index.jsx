@@ -6,7 +6,7 @@ Tiene una función handleClose que se ejecuta cuando se cierra la alerta
 y llama a la función onClose si se proporciona.
 */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Alert as BootstrapAlert } from 'react-bootstrap';
 
 const Alert = ({ variant, message, onClose, show }) => {
