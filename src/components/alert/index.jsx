@@ -4,6 +4,8 @@ en función de su variante (success o danger).
 
 Tiene una función handleClose que se ejecuta cuando se cierra la alerta
 y llama a la función onClose si se proporciona.
+
+Tiene un timeout de 2 segundos para cerrarse automáticamente.
 */
 
 import React from 'react';
