@@ -1,3 +1,18 @@
+/*
+Este componente principal representa la aplicación en su conjunto.
+Utiliza el estado de React para manejar el estado de inicio de sesión (isLoggedIn)
+y el mensaje de alerta (alertMessage).
+
+Tiene una función handleLogin que se ejecuta cuando se envía el formulario de inicio de sesión
+y llama a la función de autenticación del servicio authService.
+
+Tiene una función handleCloseAlert que se ejecuta cuando se cierra la alerta
+y borra el mensaje de alerta.
+
+Renderiza el componente de Alert si hay un mensaje de alerta y renderiza el componente de Login
+pasando la función de manejo de inicio de sesión (handleLogin) como una prop.
+*/
+
 import React, { useState } from 'react';
 import Login from './components/login';
 import Alert from './components/alert';
