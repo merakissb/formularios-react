@@ -6,27 +6,18 @@ import './style.css';
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleEmailChange = (event) => {
-    const emailValue = event.target.value;
-    setEmail(emailValue);
-    setIsFormValid(emailValue.trim() !== '' && password.trim() !== '');
-  };
-
-  const handlePasswordChange = (event) => {
-    const passwordValue = event.target.value;
-    setPassword(passwordValue);
-    setIsFormValid(email.trim() !== '' && passwordValue.trim() !== '');
+  const validateForm = () => {
+    return (email.trim() !== '' && password.trim() !== '');
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const isValid = (email === 'admin@gmail.com' && password === 'admin');
-    onLogin(isValid);
-    setEmail('');
-    setPassword('');
-    setIsFormValid(false);
+    if (validateForm()) {
+      onLogin(email, password);
+      setEmail('');
+      setPassword('');
+    }
   };
 
   return (
@@ -40,7 +31,7 @@ const Login = ({ onLogin }) => {
                 type="email"
                 placeholder={Dictionary.form.fields.email.placeholder}
                 value={email}
-                onChange={handleEmailChange}
+                onChange={(event) => setEmail(event.target.value)}
               />
             </Form.Group>
 
@@ -50,11 +41,11 @@ const Login = ({ onLogin }) => {
                 type="password"
                 placeholder={Dictionary.form.fields.password.placeholder}
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(event) => setPassword(event.target.value)}
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" disabled={!isFormValid}>
+            <Button variant="primary" type="submit" disabled={!validateForm()}>
               {Dictionary.form.submit}
             </Button>
           </Form>

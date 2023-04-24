@@ -4,9 +4,7 @@ import { Alert as BootstrapAlert } from 'react-bootstrap';
 const Alert = ({ variant, message, onClose }) => {
 
   const handleClose = () => {
-    if (onClose) {
-      onClose();
-    }
+    onClose && onClose();
   };
 
   return (
