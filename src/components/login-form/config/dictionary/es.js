@@ -1,6 +1,5 @@
 const Dictionary = {
   form: {
-    title: 'Formulario de ejemplo',
     submit: 'Enviar',
     fields: {
       email: {
