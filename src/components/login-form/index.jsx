@@ -11,9 +11,11 @@ import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import Dictionary from './config/dictionary/es';
 import './style.css';
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { onSubmit } = props;
 
   const handleSubmit = (event) => {
     event.preventDefault();

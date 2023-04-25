@@ -14,8 +14,10 @@ const Login = () => {
   const handleLogin = (email, password) => {
     const isAuthenticated = authService.authenticate(email, password);
 
+    const { alerts } = Dictionary;
+
     const alertVariant = isAuthenticated ? 'success' : 'danger';
-    const alertMessage = isAuthenticated ? Dictionary.alerts.success.message : Dictionary.alerts.danger.message;
+    const alertMessage = isAuthenticated ? alerts.success.message : alerts.error.message;
 
     setAlertVariant(alertVariant);
     setAlertMessage(alertMessage);
@@ -29,10 +31,7 @@ const Login = () => {
   return (
     <>
       {showAlert && (
-        <Alert
-          variant={alertVariant}
-          message={alertMessage}
-        />
+        <Alert variant={alertVariant} message={alertMessage} />
       )}
       <LoginForm onSubmit={handleLogin} />
     </>

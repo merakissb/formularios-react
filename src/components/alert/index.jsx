@@ -6,7 +6,9 @@ en función de su variante (success o danger).
 import React from 'react';
 import { Alert as BootstrapAlert } from 'react-bootstrap';
 
-const Alert = ({ variant, message }) => {
+const Alert = (props) => {
+
+  const { variant, message } = props; // Destructuring
 
   return (
     <BootstrapAlert variant={variant}>
