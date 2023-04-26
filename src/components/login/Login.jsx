@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import LoginForm from '../login-form';
-import Alert from '../alert';
+import LoginForm from '../login-form/LoginForm';
+import Alert from '../alert/Alert';
 import authService from '../../universal/services/authService';
 import Dictionary from './config/dictionary/es';
 

@@ -8,7 +8,7 @@ import { Alert as BootstrapAlert } from 'react-bootstrap';
 
 const Alert = (props) => {
 
-  const { variant, message } = props; // Destructuring
+  const { variant, message } = props;
 
   return (
     <BootstrapAlert variant={variant}>
